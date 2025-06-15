@@ -5,10 +5,6 @@ import os
 
 load_dotenv(override=True)  # loads variables from .env
 
-# Remove any proxy environment variables that could be auto-passed
-for env_key in ["HTTP_PROXY", "HTTPS_PROXY", "http_proxy", "https_proxy"]:
-    os.environ.pop(env_key, None)
-
 app = Flask(__name__)
 
 # Load environment variables
