@@ -45,6 +45,18 @@
                 <input type="text" class="form-control" id="rent" name="rent" required>
             </div>
             <div class="mb-3">
+                <label for="utilities" class="form-label">Estimated utilities ($)</label>
+                <input type="text" class="form-control" id="utilities" name="utilities" required>
+            </div>
+            <div class="mb-3">
+                <label for="misc" class="form-label">Miscellaneous expenses ($)</label>
+                <input type="text" class="form-control" id="misc" name="misc" required>
+            </div>
+            <div class="mb-3">
+                <label for="travel" class="form-label">Weekly mileage</label>
+                <input type="text" class="form-control" id="travel" name="travel" required>
+            </div>
+            <div class="mb-3">
                 <label for="debt" class="form-label">Total Debt ($)</label>
                 <input type="text" class="form-control" id="debt" name="debt" required>
             </div>
@@ -77,9 +89,11 @@
         const loadingScreen = document.getElementById('loading-screen');
         const incomeInput = document.getElementById('income');
         const rentInput = document.getElementById('rent');
+        const utilitiesInput = document.getElementById('utilities');
+        const miscInput = document.getElementById('misc');
         const debtInput = document.getElementById('debt');
 
-        [incomeInput, rentInput, debtInput].forEach(input => {
+        [incomeInput, rentInput, debtInput, utilitiesInput, miscInput].forEach(input => {
             input.addEventListener('input', () => {
                 if (input.id === 'debt' && input.value.toLowerCase() === 'none') return;
                 formatCurrency(input);
@@ -95,6 +109,8 @@
 
             const income = cleanCurrency(incomeInput.value);
             const rent = cleanCurrency(rentInput.value);
+            const utilities = cleanCurrency(utilitiesInput.value);
+            const misc = cleanCurrency(miscInput.value);
             const debt = debtInput.value.toLowerCase() === 'none' ? 'none' : cleanCurrency(debtInput.value);
 
             if (!income || isNaN(income) || income <= 0) {
@@ -105,6 +121,16 @@
             if (!rent || isNaN(rent) || rent <= 0) {
                 e.preventDefault();
                 alert('Please enter a valid number for rent.');
+                return;
+            }
+            if (!utilities || isNaN(utilities) || utilities <= 0) {
+                e.preventDefault();
+                alert('Please enter a valid number for utilities.');
+                return;
+            }
+            if (!misc || isNaN(misc) || misc <= 0) {
+                e.preventDefault();
+                alert('Please enter a valid number for miscelaneous.');
                 return;
             }
 
