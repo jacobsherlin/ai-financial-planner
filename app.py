@@ -1,13 +1,13 @@
 from flask import Flask, render_template, request
+from openai import OpenAI
 from dotenv import load_dotenv
 import os
 
 load_dotenv(override=True)  # loads variables from .env
-
 app = Flask(__name__)
 
 # Load environment variables
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"), proxies={"http": "http://proxy", "https": "https://proxy"})
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 # Custom filter to split string
 def split_filter(s, delimiter, maxsplit=-1):
