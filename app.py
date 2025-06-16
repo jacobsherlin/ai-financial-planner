@@ -23,15 +23,18 @@ Act as a professional personal financial advisor. Provide a concise, structured,
 User's financial information:
 - Monthly income: ${user_info['income']}
 - Rent/Mortgage: ${user_info['rent']}
+- Estimated utilities: ${user_info['utilities']}
+- Miscellaneous expenses: ${user_info['misc']}
+- Weekly mileage: {user_info['travel']}
 - Total debt: ${user_info['debt']}
 - Goal: {user_info['goal']}
 
 Include the following sections:
 - Financial Overview: List the user's provided financial details. Use proper capitalization
 - Monthly Budget Breakdown: Suggest a monthly budget with percentages of income for each category, includingm how much to allocate for paying/saving for goal, savings/retirement, housing, estimated utilities, savings, food, transportation, etc. . Use proper capitalization
-- Debt Reduction Strategy: Provide actionable steps to reduce debt. Use proper capitalization (only include this section if debt > $0)
+- Goal Strategy: Provide actionable steps to reduce debt. Use proper capitalization
 - Tips For Optimizing Spending: Offer practical spending tips. Use proper capitalization
-- Savings And Emergency Fund: Advise on savings and emergency fund goals. Use proper capitalization
+- Savings And Emergency Fund: Advise on savings and emergency fund goals, and even investing they have enough budget. Use proper capitalization
 - Summary: Summarize the plan and next steps. Use proper capitalization
 - Encouragement: Provide an encouraging message and support for the user. Use proper capitalization
 """
@@ -56,6 +59,9 @@ def index():
         user_info = {
             "income": request.form["income"],
             "rent": request.form["rent"],
+            "utilities": request.form["utilities"],
+            "misc": request.form["misc"],
+            "travel": request.form["travel"],
             "debt": request.form["debt"],
             "goal": request.form["goal"]
         }
