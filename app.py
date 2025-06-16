@@ -28,7 +28,7 @@ User's financial information:
 
 Include the following sections:
 - Financial Overview: List the user's provided financial details. Use proper capitalization
-- Monthly Budget Breakdown: Suggest a monthly budget with percentages of income for each category, including housing, estimated utilities, savings, food, transportation, etc. . Use proper capitalization
+- Monthly Budget Breakdown: Suggest a monthly budget with percentages of income for each category, includingm how much to allocate for paying/saving for goal, savings/retirement, housing, estimated utilities, savings, food, transportation, etc. . Use proper capitalization
 - Debt Reduction Strategy: Provide actionable steps to reduce debt. Use proper capitalization (only include this section if debt > $0)
 - Tips For Optimizing Spending: Offer practical spending tips. Use proper capitalization
 - Savings And Emergency Fund: Advise on savings and emergency fund goals. Use proper capitalization
