@@ -45,8 +45,30 @@
         <div class="mt-5">
             <h3>Result:</h3>
             <div class="border p-3 bg-light rounded">
-                <pre style="white-space: pre-wrap;">{{ plan }}</pre>
-            </div>
+    <pre id="formatted-result" style="white-space: pre-wrap;"></pre>
+</div>
+
+<script>
+    const rawPlan = `{{ plan | tojson | safe }}`;
+
+    function formatResponse(raw) {
+        let clean = raw;
+
+        // Remove Markdown bold and LaTeX syntax
+        clean = clean
+            .replace(/\*\*/g, '')                        // remove **
+            .replace(/\\\(|\\\)|\\\[|\\\]/g, '')         // remove \( \) \[ \]
+            .replace(/\\boxed\{(.+?)\}/g, '<strong class="fs-4">$1</strong>'); // boxed{} => bold large font
+
+        // Optional: emphasize final result line
+        clean = clean.replace(/Thus, the final answer is:(.*?)$/im, '<div class="mt-4"><strong>Final Answer:</strong>$1</div>');
+
+        return clean;
+    }
+
+    document.getElementById('formatted-result').innerHTML = formatResponse(rawPlan);
+</script>
+
         </div>
         {% endif %}
     </div>
